@@ -44,3 +44,6 @@ body {
 main {
     flex: 1 0 auto;
 }
+pre{
+    background:#f5f2f0;
+}

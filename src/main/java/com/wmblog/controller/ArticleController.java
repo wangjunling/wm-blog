@@ -29,7 +29,7 @@ public class ArticleController
         Path path = Paths.get("res/article1.md");
         try (BufferedReader reader = Files.newBufferedReader(path); Stream<String> lines = reader.lines())
         {
-            String article = lines.map(String::valueOf).collect(Collectors.joining());
+            String article = lines.map(String::valueOf).collect(Collectors.joining("\n"));
             model.addAttribute("article", article);
         }
         catch (IOException e)
