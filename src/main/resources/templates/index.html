@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>首页</title>
@@ -13,7 +13,12 @@
 <nav class="white">
     <div class="nav-wrapper container">
         <a href="/" class="brand-logo  green-text text-accent-3">WM</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons green-text text-accent-3">menu</i></a>
         <ul class="right hide-on-med-and-down">
+            <li><a href="#!" class="green-text text-accent-3">JAVA</a></li>
+            <li><a href="#!" class="green-text text-accent-3">代码备忘</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
             <li><a href="#!" class="green-text text-accent-3">JAVA</a></li>
             <li><a href="#!" class="green-text text-accent-3">代码备忘</a></li>
         </ul>
@@ -80,12 +85,17 @@
     <div class="footer-copyright">
         <div class="container">
             © 2016 Copyright wm
-            <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+            &lt;!&ndash;<a class="grey-text text-lighten-4 right" href="#!">More Links</a>&ndash;&gt;
         </div>
     </div>
 </footer>
 
 <script src="/js/jquery-1.11.3.min.js"></script>
 <script src="/js/materialize.min.js"></script>
+<script>
+    $(function () {
+        $(".button-collapse").sideNav();
+    })
+</script>
 </body>
 </html>
