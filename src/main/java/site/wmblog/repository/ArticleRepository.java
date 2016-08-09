@@ -1,6 +1,6 @@
-package com.wmblog.repository;
+package site.wmblog.repository;
 
-import com.wmblog.entity.Article;
+import site.wmblog.entity.Article;
 import org.springframework.data.repository.CrudRepository;
 
 /**

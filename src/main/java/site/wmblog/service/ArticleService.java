@@ -1,6 +1,6 @@
-package com.wmblog.service;
+package site.wmblog.service;
 
-import com.wmblog.entity.Article;
+import site.wmblog.entity.Article;
 
 /**
  * Created by wangjunling on 2016/8/9.

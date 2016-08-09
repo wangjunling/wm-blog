@@ -1,4 +1,4 @@
-package com.wmblog.result;
+package site.wmblog.result;
 
 /**
  * Created by wangjunling on 2016/7/27.

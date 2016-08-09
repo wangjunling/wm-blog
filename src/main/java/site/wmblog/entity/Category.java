@@ -1,4 +1,4 @@
-package com.wmblog.entity;
+package site.wmblog.entity;
 
 import javax.persistence.*;
 import java.util.Date;

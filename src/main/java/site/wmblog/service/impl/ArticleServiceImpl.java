@@ -1,8 +1,8 @@
-package com.wmblog.service.impl;
+package site.wmblog.service.impl;
 
-import com.wmblog.entity.Article;
-import com.wmblog.repository.ArticleRepository;
-import com.wmblog.service.ArticleService;
+import site.wmblog.entity.Article;
+import site.wmblog.repository.ArticleRepository;
+import site.wmblog.service.ArticleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
