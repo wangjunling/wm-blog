@@ -1,25 +1,32 @@
 package com.wmblog.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by wangjunling on 2016/8/5.
  */
+@Entity
+@Table(name = "tb_article")
 public class Article
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
 
     private String content;
 
-    private String tag;
+    private String tags;
+
+    private Long categoryId;
 
     private Date createTime;
 
     private Date updateTime;
 
-    private String author;
+    private Long authorId;
 
     public Long getId()
     {
@@ -51,14 +58,24 @@ public class Article
         this.content = content;
     }
 
-    public String getTag()
+    public String getTags()
     {
-        return tag;
+        return tags;
     }
 
-    public void setTag(String tag)
+    public void setTags(String tags)
     {
-        this.tag = tag;
+        this.tags = tags;
+    }
+
+    public Long getCategoryId()
+    {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId)
+    {
+        this.categoryId = categoryId;
     }
 
     public Date getCreateTime()
@@ -81,13 +98,12 @@ public class Article
         this.updateTime = updateTime;
     }
 
-    public String getAuthor()
-    {
-        return author;
-    }
+	public Long getAuthorId() {
+		return authorId;
+	}
 
-    public void setAuthor(String author)
-    {
-        this.author = author;
-    }
+	public void setAuthorId(Long authorId) {
+		this.authorId = authorId;
+	}
+
 }
