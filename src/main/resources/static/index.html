@@ -29,41 +29,25 @@
 <div class="container" style="min-height: 690px;">
     <br/>
     <br/>
-    <div class="row">
+    <div class="row" >
 
-        <div class="col s12 m4">
+        <div class="col s12 m4" ng-repeat="article in list">
             <div class="card">
                 <div class="card-content black-text">
-                    <span class="card-title"><a href="/detail.html" class="black-text">maven 多环境打包</a></span>
+                    <span class="card-title"><a href="/detail.html" class="black-text" ng-bind="article.title">maven 多环境打包</a></span>
                     <div class="chip green accent-4 white-text">
                         java
                     </div>
                     <div class="chip green accent-4 white-text">
                         maven
                     </div>
-                    <p>maven 多环境配置</p>
+                    <p ng-bind="article.description">maven 多环境配置</p>
                 </div>
                 <div class="card-action right-align">
                     <a class="green-text text-accent-4">2016-8-5</a>
                 </div>
             </div>
         </div>
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-content black-text">
-                    <span class="card-title"><a href="/detail/1" class="black-text">Card Title</a></span>
-                    <div class="chip green accent-4 white-text">
-                        Tag
-                    </div>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action right-align">
-                    <a href="#" class="green-text text-accent-4">2016-8-5</a>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 
@@ -87,7 +71,7 @@
     <div class="footer-copyright">
         <div class="container">
             © 2016 Copyright wm
-            &lt;!&ndash;<a class="grey-text text-lighten-4 right" href="#!">More Links</a>&ndash;&gt;
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>
 </footer>
@@ -96,8 +80,10 @@
 <script src="/js/materialize.min.js"></script>
 <script>
     var app = angular.module("indexApp",[]);
-    app.controller("indexCtrl",function(){
-
+    app.controller("indexCtrl",function($scope,$http){
+        $http.get("/article/list").success(function (response) {
+            $scope.list=response.data.content;
+        })
     });
     $(function () {
         $(".button-collapse").sideNav();

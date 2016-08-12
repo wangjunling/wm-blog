@@ -1,5 +1,8 @@
 package site.wmblog.service.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.wmblog.entity.Article;
@@ -22,5 +25,11 @@ public class ArticleServiceImpl implements ArticleService {
 
 		return articleRepository.findOne(id);
 
+	}
+
+	@Override
+	public Page<Article> list() {
+		Pageable pageable = new PageRequest(0,10);
+		return articleRepository.findAll(pageable);
 	}
 }

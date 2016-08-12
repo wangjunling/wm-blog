@@ -63,7 +63,7 @@
 <script>
     var app = angular.module("articleDetailApp",['ngSanitize']);
     app.controller("articleDetailCtrl",function($scope,$http){
-        $http.get("/detail/1").success(function (response) {
+        $http.get("/article/detail/1").success(function (response) {
             var article = response.data;
             article.content= markdown.toHTML(article.content);
             $scope.article=article;

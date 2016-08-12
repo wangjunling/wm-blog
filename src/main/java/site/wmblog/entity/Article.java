@@ -16,6 +16,8 @@ public class Article
 
     private String title;
 
+	private String description;
+
     private String content;
 
     private String tags;
@@ -48,7 +50,15 @@ public class Article
         this.title = title;
     }
 
-    public String getContent()
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getContent()
     {
         return content;
     }
