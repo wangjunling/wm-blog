@@ -1,53 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>首页</title>
+    <script src="/js/angular.js"></script>
+    <script src="/js/angular-sanitize.js"></script>
     <link type="text/css" href="/css/style.css" rel="stylesheet" />
     <link type="text/css" href="/css/materialize.css" rel="stylesheet" media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<!-- Dropdown Structure -->
-<!--<ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">JAVA</a></li>
-    <li><a href="#!">开发工具</a></li>
-    <li class="divider"></li>
-    &lt;!&ndash;<li><a href="#!">three</a></li>&ndash;&gt;
-</ul>-->
+
 <nav class="white">
     <div class="nav-wrapper container">
         <a href="/" class="brand-logo  green-text text-accent-3">WM</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="#" class="green-text text-accent-3">JAVA</a></li>
             <li><a href="#" class="green-text text-accent-3">代码备忘</a></li>
-     <!--       &lt;!&ndash; Dropdown Trigger &ndash;&gt;
-            <li><a class="dropdown-button  green-text text-accent-3" href="#!" data-activates="dropdown1">分类<i
-                    class="material-icons right">arrow_drop_down</i></a></li>-->
+
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" ng-app="articleDetailApp" ng-controller="articleDetailCtrl">
     <br/>
     <br/>
     <div class="row">
         <div class="col s12 m12">
-            <h4 class="header" th:text="${article.title}">Collections</h4>
-            <div id="article" class="section scrollspy" th:value="${article.content}">
-
+            <h4 class="header" ng-bind="article.title" ></h4>
+            <div  class="section scrollspy" ng-bind-html="article.content">
             </div>
         </div>
-<!--        <div class="col hide-on-small-only m3 l2">
-            <div class="toc-wrapper pinned" style="top: 70px;">
-                <div style="height: 1px;">
-                    <ul class="section table-of-contents">
-                        <li><a href="#materialdesign" class="active">Material Design</a></li>
-                        <li><a href="#team" class="">Meet the Team</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>-->
     </div>
 </div>
 
@@ -78,9 +61,14 @@
 <script src="/js/materialize.min.js"></script>
 <script src="/js/markdown.js"></script>
 <script>
-    $(function () {
-        var toHTML = markdown.toHTML($("#article").attr("value"));
-        $("#article").html(toHTML);
+    var app = angular.module("articleDetailApp",['ngSanitize']);
+    app.controller("articleDetailCtrl",function($scope,$http){
+        $http.get("/detail/1").success(function (response) {
+            var article = response.data;
+            article.content= markdown.toHTML(article.content);
+            $scope.article=article;
+            $scope.abc="<h2>abc</h2>";
+        })
     });
 </script>
 </body>

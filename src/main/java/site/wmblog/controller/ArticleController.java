@@ -1,13 +1,15 @@
 package site.wmblog.controller;
 
-import site.wmblog.entity.Article;
-import site.wmblog.service.ArticleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import site.wmblog.entity.Article;
+import site.wmblog.result.Result;
+import site.wmblog.service.ArticleService;
 
 import javax.annotation.Resource;
 
@@ -20,16 +22,16 @@ public class ArticleController {
 	@Resource
 	private ArticleService articleService;
 
-	@RequestMapping("/detail/{id}")
-	public String detail(@PathVariable Long id, Model model) {
+	@RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Result detail(@PathVariable Long id) {
 		try {
 			Article article = articleService.findById(id);
-			model.addAttribute("article", article);
+			return new Result().success(article);
 		} catch (Exception e) {
 			logger.error("select article error!", e);
+			return new Result().error();
 		}
-
-		return "article/detail";
 	}
 
 }

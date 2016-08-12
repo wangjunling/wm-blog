@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <title>首页</title>
+    <script src="/js/angular.js"></script>
     <link type="text/css" href="/css/materialize.css" rel="stylesheet" media="screen,projection"/>
     <link href="/css/style.css" rel="stylesheet" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
+<body ng-app="indexApp" ng-controller="indexCtrl">
 
 <nav class="white">
     <div class="nav-wrapper container">
@@ -24,6 +25,7 @@
         </ul>
     </div>
 </nav>
+
 <div class="container" style="min-height: 690px;">
     <br/>
     <br/>
@@ -32,7 +34,7 @@
         <div class="col s12 m4">
             <div class="card">
                 <div class="card-content black-text">
-                    <span class="card-title"><a href="/detail/1" class="black-text">maven 多环境打包</a></span>
+                    <span class="card-title"><a href="/detail.html" class="black-text">maven 多环境打包</a></span>
                     <div class="chip green accent-4 white-text">
                         java
                     </div>
@@ -93,6 +95,10 @@
 <script src="/js/jquery-1.11.3.min.js"></script>
 <script src="/js/materialize.min.js"></script>
 <script>
+    var app = angular.module("indexApp",[]);
+    app.controller("indexCtrl",function(){
+
+    });
     $(function () {
         $(".button-collapse").sideNav();
     })
