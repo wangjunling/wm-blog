@@ -19,8 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("article")
-public class ArticleController {
-	private Logger logger = LoggerFactory.getLogger(ArticleController.class);
+public class ArticleController extends BaseController {
 	@Resource
 	private ArticleService articleService;
 

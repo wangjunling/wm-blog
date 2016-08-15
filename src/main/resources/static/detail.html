@@ -1,74 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>首页</title>
-    <script src="/js/angular.min.js"></script>
-    <script src="/js/angular-sanitize.js"></script>
-    <link type="text/css" href="/css/style.css" rel="stylesheet" />
-    <link type="text/css" href="/css/materialize.css" rel="stylesheet" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<body>
-
-<nav class="white">
-    <div class="nav-wrapper container">
-        <a href="/" class="brand-logo  green-text text-accent-3">WM</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="#" class="green-text text-accent-3">JAVA</a></li>
-            <li><a href="#" class="green-text text-accent-3">代码备忘</a></li>
-
-        </ul>
-    </div>
-</nav>
-<div class="container" ng-app="articleDetailApp" ng-controller="articleDetailCtrl">
-    <br/>
-    <br/>
-    <div class="row">
-        <div class="col s12 m12">
-            <h4 class="header" ng-bind="article.title" ></h4>
-            <div  class="section scrollspy" ng-bind-html="article.content">
-            </div>
-        </div>
+<div class="col s12 m12">
+    <h4 class="header" ng-bind="article.title"></h4>
+    <div class="section scrollspy" ng-bind-html="article.content">
     </div>
 </div>
 
-<footer class="page-footer green accent-4">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">WM</h5>
-                <p class="grey-text text-lighten-4">A simple blog</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">contact</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="https://github.com/wangjunling">github</a></li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2016 Copyright wm
-            <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-        </div>
-    </div>
-</footer>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/materialize.min.js"></script>
-<script src="/js/markdown.js"></script>
-<script>
-    var app = angular.module("articleDetailApp",['ngSanitize']);
-    app.controller("articleDetailCtrl",function($scope,$http){
-        $http.get("/article/detail/1").success(function (response) {
-            var article = response.data;
-            article.content= markdown.toHTML(article.content);
-            $scope.article=article;
-        })
-    });
-</script>
-</body>
-</html>
