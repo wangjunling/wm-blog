@@ -29,6 +29,8 @@ function detailController($scope,$http,$routeParams) {
         $scope.article=article;
     })
 }
-
-
-
+app.filter('split',function () {
+    return function (input, splitChar) {
+        return input.split(splitChar);
+    }
+});
