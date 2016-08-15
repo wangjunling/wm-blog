@@ -14,7 +14,15 @@ app.config(function ($routeProvider) {
         redirectTo: '/'
     });
 });
+app.controller("navCtrl",navController);
 
+
+
+function navController($scope,$http) {
+    $http.get("/category/nav").success(function (response) {
+        $scope.categories = response.data;
+    });
+}
 function listController($scope, $http) {
     $http.get("/article/list").success(function (response) {
         $scope.list = response.data.content;
