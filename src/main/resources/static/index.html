@@ -24,11 +24,27 @@
  <!--           <li><a href="#!" class="green-text text-accent-3">JAVA</a></li>
             <li><a href="#!" class="green-text text-accent-3">代码备忘</a></li>
             <li><a href="#!" class="green-text text-accent-3">wangjunling</a></li>-->
+            <li><a ng-hide="user"  href="#/login" class="green-text text-accent-3" >登录</a></li>
+            <li ><a ng-show="user" class="dropdown-button green-text text-accent-3" href="#!" data-activates="dropdown1">欢迎：{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li ng-repeat="category in categories"><a href="#!" class="green-text text-accent-3"  ng-bind="category.name">JAVA</a></li>
+            <li> <a ng-hide="user"  href="#/login" class="green-text text-accent-3">登录</a></li>
+            <li><a ng-show="user" class="dropdown-button green-text text-accent-3" href="#!" data-activates="dropdown2">欢迎：{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
     </div>
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!" >发表文章</a></li>
+        <!-- <li><a href="#!">two</a></li>-->
+        <li class="divider"></li>
+        <li><a ng-click="logout()" class="black-text">退出</a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+        <li><a href="#!" >发表文章</a></li>
+        <!-- <li><a href="#!">two</a></li>-->
+        <li class="divider"></li>
+        <li><a ng-click="logout()" class=" black-text">退出</a></li>
+    </ul>
 </nav>
 
 <div class="container" style="min-height: 690px;">
@@ -67,10 +83,12 @@
 <script src="js/materialize.min.js"></script>
 <script src="js/markdown.js"></script>
 <script>
-
-    $(function () {
+    $( document ).ready(function(){
         $(".button-collapse").sideNav();
-    })
+        $(".dropdown-button").dropdown();
+    });
+
+
 </script>
 </body>
 </html>
