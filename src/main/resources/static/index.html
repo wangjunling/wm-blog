@@ -25,11 +25,13 @@
             <li><a href="#!" class="green-text text-accent-3">代码备忘</a></li>
             <li><a href="#!" class="green-text text-accent-3">wangjunling</a></li>-->
             <li><a ng-hide="user"  href="#/login" class="green-text text-accent-3" >登录</a></li>
+            <li><a ng-hide="user"  href="#/register" class="green-text text-accent-3" >注册</a></li>
             <li ><a ng-show="user" class="dropdown-button green-text text-accent-3" href="#!" data-activates="dropdown1">欢迎：{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li ng-repeat="category in categories"><a href="#!" class="green-text text-accent-3"  ng-bind="category.name">JAVA</a></li>
             <li> <a ng-hide="user"  href="#/login" class="green-text text-accent-3">登录</a></li>
+            <li> <a ng-hide="user"  href="#/register" class="green-text text-accent-3">注册</a></li>
             <li><a ng-show="user" class="dropdown-button green-text text-accent-3" href="#!" data-activates="dropdown2">欢迎：{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
     </div>

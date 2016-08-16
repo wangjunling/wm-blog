@@ -13,6 +13,9 @@ app.config(function ($routeProvider) {
     }).when("/login", {
         controller:loginController,
         templateUrl: '/login.html'
+    }).when("/register", {
+        controller:registerController,
+        templateUrl: '/register.html'
     }).otherwise({
         redirectTo: '/'
     });
@@ -31,9 +34,6 @@ function navController($scope, $http) {
     });
     $http.get("/check/login").success(function (response) {
         $scope.user = response.data;
-        if(response.data){
-            $scope.loginUrl = "#/";
-        }
     });
     $scope.logout=function () {
         $http.get("/user/logout").success(function (response) {
@@ -64,7 +64,25 @@ function loginController($scope,$http){
             username:$scope.username,
             password:$scope.password
         }).success(function (response) {
-            window.location.href='/'
+            window.location.href='/';
+        });
+    }
+}
+function registerController($scope, $http) {
+    $scope.submit=function () {
+        var email = $scope.email;
+        var password = $scope.password;
+        var password2 = $scope.password2;
+        if(password!=password2){
+           $scope.passwordClass= "invalid";
+            $scope.passwordMessage="::after";
+            return;
+        }
+        $http.post("/user/register", {
+            email: $scope.email,
+            password: $scope.password
+        }).success(function (response) {
+            window.location.href = '#/login';
         });
     }
 }

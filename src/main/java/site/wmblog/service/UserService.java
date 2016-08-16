@@ -10,4 +10,6 @@ import java.lang.reflect.InvocationTargetException;
  */
 public interface UserService {
 	UserSession login(String username, String password) throws Exception;
+
+	void save(User user);
 }

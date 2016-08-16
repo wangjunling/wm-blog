@@ -10,6 +10,7 @@ import site.wmblog.session.UserSession;
 import site.wmblog.session.UserSessionFactory;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -29,5 +30,14 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(userSession, user);
 		UserSessionFactory.update(userSession);
 		return userSession;
+	}
+
+	@Override
+	public void save(User user) {
+		Date now = new Date();
+		user.setUsername(user.getEmail());
+		user.setCreateTime(now);
+		user.setUpdateTime(now);
+		userRepository.save(user);
 	}
 }

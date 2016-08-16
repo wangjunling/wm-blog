@@ -1,0 +1,27 @@
+<form class="col s12 m6" ng-submit="submit()">
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="email" type="email" class="validate" ng-model="email" required >
+            <label for="email"  data-error="wrong" data-success="right">邮箱</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="password" type="password" class="validate" ng-model="password" required >
+            <label for="password">密码</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input ng-class="passwordClass" id="password2" type="password" class="validate" ng-model="password2" required >
+            <label ng-class="passwordMessage" for="password2">确认密码</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <button class="btn green accent-3 " type="submit" name="action">注册
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+</form>
