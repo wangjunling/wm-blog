@@ -1,19 +1,19 @@
-<form class="col s12 m6">
+<form class="col s12 m6" ng-submit="submit()">
     <div class="row">
         <div class="input-field col s12">
-            <input id="username" type="text" class="validate" ng-model="username">
+            <input id="username" type="text" class="validate" ng-model="username" required>
             <label for="username">用户名/邮箱</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-            <input id="password" type="password" class="validate" ng-model="password">
+            <input id="password" type="password" class="validate" ng-model="password" required>
             <label for="password">密码</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col s12">
-            <button class="btn green accent-3 " type="submit" name="action" ng-click="submit()">登录
+            <button class="btn green accent-3 " type="submit" name="action">登录
                 <i class="material-icons right">send</i>
             </button>
         </div>

@@ -70,14 +70,6 @@ function loginController($scope,$http){
 }
 function registerController($scope, $http) {
     $scope.submit=function () {
-        var email = $scope.email;
-        var password = $scope.password;
-        var password2 = $scope.password2;
-        if(password!=password2){
-           $scope.passwordClass= "invalid";
-            $scope.passwordMessage="::after";
-            return;
-        }
         $http.post("/user/register", {
             email: $scope.email,
             password: $scope.password
