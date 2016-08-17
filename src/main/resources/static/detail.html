@@ -5,7 +5,7 @@
          简述： <span ng-bind="article.description">
           </span>
     </div>
-    <div class="section scrollspy" ng-bind-html="article.content">
+    <div class="section scrollspy" ng-bind-html="article.content | markdown2html">
     </div>
 </div>
 

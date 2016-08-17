@@ -2,6 +2,7 @@ package site.wmblog.controller;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import site.wmblog.entity.User;
 import site.wmblog.result.Result;
@@ -17,7 +18,7 @@ public class RegisterController extends BaseController {
 	@Resource
 	private UserService userService;
 
-	@RequestMapping("/user/register")
+	@RequestMapping(value = "/user/register",method = RequestMethod.POST)
 	public Result register(@RequestBody User user) {
 		try {
 			userService.save(user);

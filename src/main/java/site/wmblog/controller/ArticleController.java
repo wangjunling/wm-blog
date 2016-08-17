@@ -3,10 +3,7 @@ package site.wmblog.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import site.wmblog.entity.Article;
 import site.wmblog.result.Result;
 import site.wmblog.service.ArticleService;
@@ -39,6 +36,17 @@ public class ArticleController extends BaseController {
 		try {
 			Page<Article> articlePage = articleService.list();
 			return new Result().success(articlePage);
+		} catch (Exception e) {
+			logger.error("select article error!", e);
+			return new Result().error();
+		}
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public Result save(@RequestBody Article article) {
+		try {
+			 articleService.save(article);
+			return new Result().success();
 		} catch (Exception e) {
 			logger.error("select article error!", e);
 			return new Result().error();

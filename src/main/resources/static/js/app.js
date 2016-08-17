@@ -10,6 +10,12 @@ app.config(function ($routeProvider) {
     }).when("/detail/:id", {
         controller: detailController,
         templateUrl: 'detail.html'
+    }).when("/write", {
+        controller: writeController,
+        templateUrl: 'write.html'
+    }).when("/save/result", {
+        controller:saveResultController,
+        templateUrl: '/save_result.html'
     }).when("/login", {
         controller:loginController,
         templateUrl: '/login.html'
@@ -26,7 +32,12 @@ app.filter('split', function () {
         return input.split(splitChar);
     }
 });
-
+app.filter('markdown2html', function () {
+    return function (input) {
+        if (!input || !input.length) { return; }
+        return markdown.toHTML(input);
+    }
+});
 
 function navController($scope, $http) {
     $http.get("/category/nav").success(function (response) {
@@ -53,7 +64,7 @@ function detailController($scope, $http, $routeParams) {
     var id = $routeParams.id;
     $http.get('/article/detail/' + id + '').success(function (response) {
         var article = response.data;
-        article.content = markdown.toHTML(article.content);
+        // article.content = markdown.toHTML(article.content);
         $scope.article = article;
     })
 }
@@ -77,4 +88,25 @@ function registerController($scope, $http) {
             window.location.href = '#/login';
         });
     }
+}
+
+function writeController($scope, $http) {
+    $scope.changeContent=function () {
+        var content = $scope.content;
+        if(content!=undefined){
+            $scope.htmlContent = markdown.toHTML($scope.content);
+        }
+    }
+    $scope.save=function () {
+      $http.post("/article/save",{
+          title:$scope.title,
+          description:$scope.description,
+          content:$scope.content
+      }).success(function (response) {
+          location.href="#/save/result"
+      });
+    }
+}
+function saveResultController() {
+    
 }

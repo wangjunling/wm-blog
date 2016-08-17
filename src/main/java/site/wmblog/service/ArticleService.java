@@ -13,4 +13,6 @@ public interface ArticleService {
 	Article findById(Long id) throws Exception;
 
 	Page<Article> list();
+
+	Article save(Article article);
 }

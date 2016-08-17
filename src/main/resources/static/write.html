@@ -1,0 +1,41 @@
+
+<form class="col s12 m6" ng-submit="save()">
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="title" type="text" class="validate" ng-model="title" required>
+            <label for="title">标题</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <textarea id="icon_prefix" cols="10" rows="10" class="materialize-textarea" ng-model="description" required></textarea>
+            <label for="icon_prefix2">简述</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <textarea id="icon_prefix2" cols="10" rows="10" class="materialize-textarea" ng-change="changeContent()" ng-model="content"></textarea>
+            <label for="icon_prefix2">内容(请使用markdown标记语言)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <button class="btn green accent-3 " type="submit" name="action">保存
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+</form>
+<div class="col s12 m6">
+    <h4 class="header" ng-bind="title">标题</h4>
+    <div class="card-panel teal yellow lighten-5 " ng-show="description">
+        简述： <span ng-bind="description">大是大非
+          </span>
+    </div>
+    <div class="row">
+        <div class="input-field col s12" ng-bind-html="htmlContent" >
+
+        </div>
+    </div>
+</div>

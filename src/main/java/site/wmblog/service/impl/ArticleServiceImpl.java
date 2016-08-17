@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import site.wmblog.entity.Article;
 import site.wmblog.repository.ArticleRepository;
 import site.wmblog.service.ArticleService;
+import site.wmblog.session.UserSessionFactory;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * Created by wangjunling on 2016/8/9.
@@ -31,5 +33,14 @@ public class ArticleServiceImpl implements ArticleService {
 	public Page<Article> list() {
 		Pageable pageable = new PageRequest(0,10);
 		return articleRepository.findAll(pageable);
+	}
+
+	@Override
+	public Article save(Article article) {
+		Date date = new Date();
+		article.setCreateTime(date);
+		article.setUpdateTime(date);
+		article.setAuthorId(UserSessionFactory.getUserSession().getId());
+		return articleRepository.save(article);
 	}
 }
