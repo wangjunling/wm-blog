@@ -24,4 +24,9 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> nav() {
 		return categoryRepository.findAll(new PageRequest(0, Constant.NAV_SIZE)).getContent();
 	}
+
+	@Override
+	public Category save(Category category) {
+		return categoryRepository.save(category);
+	}
 }

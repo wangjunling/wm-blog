@@ -1,7 +1,20 @@
 /**
  * Created by wangjunling on 2016/8/15.
  */
+$( document ).ready(function(){
+    $(".button-collapse").sideNav();
+    $(".dropdown-button").dropdown();
+    $.fn.extend({
+        animateCss: function (animationName) {
+            var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+            $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+                $(this).removeClass('animated ' + animationName);
+            });
+        }
+    });
 
+    $("#logo").animateCss('bounce');
+});
 var app = angular.module("indexApp", ['ngRoute', 'ngSanitize']);
 
 app.config(function ($routeProvider) {

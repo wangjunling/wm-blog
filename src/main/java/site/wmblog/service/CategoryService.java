@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface CategoryService {
 	List<Category> nav();
-	
+
+	Category save(Category category);
 }

@@ -8,47 +8,42 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "tb_article")
-public class Article
-{
+public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	private Long id;
 
-    private String title;
+	private String title;
 
 	private String description;
 
-    private String content;
+	private String content;
 
-    private String tags;
+	private String tags;
 
-    private Long categoryId;
+	private Long categoryId;
 
-    private Date createTime;
+	private Date createTime;
 
-    private Date updateTime;
+	private Date updateTime;
 
-    private Long authorId;
+	private Long authorId;
 
-    public Long getId()
-    {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getTitle()
-    {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public String getDescription() {
 		return description;
@@ -58,55 +53,45 @@ public class Article
 		this.description = description;
 	}
 
-	public String getContent()
-    {
-        return content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public void setContent(String content)
-    {
-        this.content = content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public String getTags()
-    {
-        return tags;
-    }
+	public String getTags() {
+		return tags;
+	}
 
-    public void setTags(String tags)
-    {
-        this.tags = tags;
-    }
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
 
-    public Long getCategoryId()
-    {
-        return categoryId;
-    }
+	public Long getCategoryId() {
+		return categoryId;
+	}
 
-    public void setCategoryId(Long categoryId)
-    {
-        this.categoryId = categoryId;
-    }
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
 
-    public Date getCreateTime()
-    {
-        return createTime;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public void setCreateTime(Date createTime)
-    {
-        this.createTime = createTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public Date getUpdateTime()
-    {
-        return updateTime;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    public void setUpdateTime(Date updateTime)
-    {
-        this.updateTime = updateTime;
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
 	public Long getAuthorId() {
 		return authorId;
