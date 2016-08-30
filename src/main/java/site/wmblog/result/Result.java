@@ -54,10 +54,6 @@ public class Result {
 
 		private String message;
 
-		public Meta(boolean success) {
-			this.success = success;
-		}
-
 		private Meta(boolean success, String message) {
 			this.success = success;
 			this.message = message;

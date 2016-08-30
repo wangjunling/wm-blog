@@ -21,7 +21,7 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         controller: listController,
         templateUrl: 'list.html'
-    }).when("/home/:user", {
+    }).when("/home/:username", {
         controller: userController,
         templateUrl: 'user.html'
     }).when("/detail/:id", {
@@ -127,7 +127,30 @@ function writeController($scope, $http) {
 function saveResultController() {
     
 }
-function userController() {
+function userController($scope, $http, $routeParams) {
     $('ul.tabs').tabs();
     $('.materialboxed').materialbox();
+    $('#addBio').leanModal({
+            dismissible: false, // 点击模态框外部则关闭模态框
+            opacity: .6, // 背景透明度
+            in_duration: 300, // 切入时间
+            out_duration: 200, // 切出时间
+            ready: function() {  }, // 当模态框打开时执行的函数
+            complete: function() {  } // 当模态框关闭时执行的函数
+        }
+    );
+
+
+
+
+    console.log($routeParams);
+    var username = $routeParams.username;
+    console.log(username);
+    $http.get('/article/list/'+username).success(function (response) {
+        if(response.meta.success){
+            $scope.list = response.data.content;
+        }else{
+            Materialize.toast(response.meta.message, 3000, 'rounded')
+        }
+    });
 }

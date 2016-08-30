@@ -21,6 +21,8 @@ public class User {
 
 	private String email;
 
+	private String bio;
+
 	private Date lastLoginTime;
 
 	private Date createTime;
@@ -89,5 +91,13 @@ public class User {
 
 	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 }

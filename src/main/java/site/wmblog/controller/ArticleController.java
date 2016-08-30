@@ -1,7 +1,5 @@
 package site.wmblog.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import site.wmblog.entity.Article;
@@ -9,7 +7,6 @@ import site.wmblog.result.Result;
 import site.wmblog.service.ArticleService;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by wangjunling on 2016/8/5.
@@ -49,6 +46,17 @@ public class ArticleController extends BaseController {
 			return new Result().success();
 		} catch (Exception e) {
 			logger.error("select article error!", e);
+			return new Result().error();
+		}
+	}
+
+	@RequestMapping(value = "/list/{username}", method = RequestMethod.GET)
+	public Result listByUserId(@PathVariable String username) {
+		try {
+			Page<Article> articlePage = articleService.list(username);
+			return new Result().success(articlePage);
+		} catch (Exception e) {
+			logger.error("select user article error!", e);
 			return new Result().error();
 		}
 	}

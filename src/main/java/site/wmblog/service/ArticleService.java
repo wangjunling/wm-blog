@@ -15,4 +15,6 @@ public interface ArticleService {
 	Page<Article> list();
 
 	Article save(Article article);
+
+	Page<Article> list(String username) throws Exception;
 }

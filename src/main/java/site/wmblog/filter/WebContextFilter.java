@@ -30,6 +30,6 @@ public class WebContextFilter implements Filter {
 
 	@Override
 	public void destroy() {
-
+		WebContext.destroy();
 	}
 }
